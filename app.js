@@ -1,64 +1,84 @@
-let minisplits = [];
+const supabase = window.supabase.createClient(
+  "https://fsadwndjjmpiuoqoahle.supabase.co",
+  "sb_publishable_AHjOSgFVDaaXaWl6dR_icA_2lQfhgLu"
+);
 
-function agregar(){
+async function agregar() {
 
-const nombre = document.getElementById("nombre").value;
-const marca = document.getElementById("marca").value;
-const toneladas = document.getElementById("toneladas").value;
-const voltaje = document.getElementById("voltaje").value;
-const precio = document.getElementById("precio").value;
-const descripcion = document.getElementById("descripcion").value;
-const foto = document.getElementById("foto").value;
+  const nombre = document.getElementById("nombre").value;
+  const marca = document.getElementById("marca").value;
+  const toneladas = document.getElementById("toneladas").value;
+  const voltaje = document.getElementById("voltaje").value;
+  const precio = document.getElementById("precio").value;
+  const descripcion = document.getElementById("descripcion").value;
+  const foto = document.getElementById("foto").value;
 
-minisplits.push({
-nombre,
-marca,
-toneladas,
-voltaje,
-precio,
-descripcion,
-foto
-});
+  const { error } = await supabase
+    .from("Catálogo minisplit")
+    .insert([{
+      nombre: nombre,
+      marca: marca,
+      toneladas: toneladas,
+      voltaje: voltaje,
+      precio: precio,
+      descripcion: descripcion,
+      foto1: foto
+    }]);
 
-mostrar();
+  if (error) {
+    alert(error.message);
+    return;
+  }
 
-document.getElementById("nombre").value="";
-document.getElementById("marca").value="";
-document.getElementById("toneladas").value="";
-document.getElementById("voltaje").value="";
-document.getElementById("precio").value="";
-document.getElementById("descripcion").value="";
-document.getElementById("foto").value="";
+  document.getElementById("nombre").value = "";
+  document.getElementById("marca").value = "";
+  document.getElementById("toneladas").value = "";
+  document.getElementById("voltaje").value = "";
+  document.getElementById("precio").value = "";
+  document.getElementById("descripcion").value = "";
+  document.getElementById("foto").value = "";
+
+  cargar();
 }
 
-function mostrar(){
+async function cargar() {
 
-const contenedor=document.getElementById("productos");
+  const { data, error } = await supabase
+    .from("Catálogo minisplit")
+    .select("*");
 
-contenedor.innerHTML="";
+  if (error) {
+    alert(error.message);
+    return;
+  }
 
-minisplits.forEach(item=>{
+  const contenedor = document.getElementById("productos");
+  contenedor.innerHTML = "";
 
-contenedor.innerHTML+=`
-<div class="card">
+  data.forEach(item => {
 
-<img src="${item.foto}" width="100%">
+    contenedor.innerHTML += `
+      <div class="card">
 
-<h2>${item.nombre}</h2>
+        <img src="${item.foto1 || ""}" width="100%">
 
-<p><b>Marca:</b> ${item.marca}</p>
+        <h2>${item.nombre}</h2>
 
-<p><b>Toneladas:</b> ${item.toneladas}</p>
+        <p><b>Marca:</b> ${item.marca}</p>
 
-<p><b>Voltaje:</b> ${item.voltaje}</p>
+        <p><b>Toneladas:</b> ${item.toneladas}</p>
 
-<p>${item.descripcion}</p>
+        <p><b>Voltaje:</b> ${item.voltaje}</p>
 
-<h3>${item.precio}</h3>
+        <p>${item.descripcion}</p>
 
-</div>
-`;
+        <h3>$${item.precio}</h3>
 
-});
+      </div>
+    `;
+
+  });
 
 }
+
+cargar();
