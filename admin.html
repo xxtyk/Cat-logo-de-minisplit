@@ -7,16 +7,13 @@
 
 <link rel="stylesheet" href="style.css">
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="admin.js"></script>
-
 </head>
 
 <body>
 
 <header>
 <h1>Administrador de Minisplits</h1>
-<p>Agregar, editar y eliminar modelos</p>
+<p>Prueba del botón</p>
 </header>
 
 <div class="contenedor">
@@ -36,15 +33,23 @@
 <textarea id="descripcion" placeholder="Descripción"></textarea>
 
 <label>Foto 1</label>
-<input type="file" id="foto1" accept="image/*">
+<input type="file" id="foto1">
 
 <label>Foto 2</label>
-<input type="file" id="foto2" accept="image/*">
+<input type="file" id="foto2">
 
 <label>Foto 3</label>
-<input type="file" id="foto3" accept="image/*">
+<input type="file" id="foto3">
 
-<button onclick="agregar()">Guardar Minisplit</button>
+<script>
+function agregar(){
+    alert("Ahora sí funciona");
+}
+</script>
+
+<button onclick="agregar()">
+Guardar Minisplit
+</button>
 
 <hr>
 
@@ -54,8 +59,3 @@
 
 </body>
 </html>
-<script>
-window.onerror = function(mensaje){
-  alert(mensaje);
-};
-</script>
