@@ -11,72 +11,81 @@ async function agregar() {
   const voltaje = document.getElementById("voltaje").value;
   const precio = document.getElementById("precio").value;
   const descripcion = document.getElementById("descripcion").value;
+
   const archivo1 = document.getElementById("foto1").files[0];
-const archivo2 = document.getElementById("foto2").files[0];
-const archivo3 = document.getElementById("foto3").files[0];
+  const archivo2 = document.getElementById("foto2").files[0];
+  const archivo3 = document.getElementById("foto3").files[0];
+
   let foto1 = "";
-let foto2 = "";
-let foto3 = "";
+  let foto2 = "";
+  let foto3 = "";
 
-if (archivo1) {
-  const nombre = Date.now() + "_1_" + archivo1.name;
+  if (archivo1) {
+    const nombreArchivo = Date.now() + "_1_" + archivo1.name;
 
-  await supabase.storage
-    .from("minisplits")
-    .upload(nombre, archivo1);
+    await supabase.storage
+      .from("minisplits")
+      .upload(nombreArchivo, archivo1);
 
-  foto1 = supabase.storage
-    .from("minisplits")
-    .getPublicUrl(nombre).data.publicUrl;
-}
+    foto1 = supabase.storage
+      .from("minisplits")
+      .getPublicUrl(nombreArchivo).data.publicUrl;
+  }
 
-if (archivo2) {
-  const nombre = Date.now() + "_2_" + archivo2.name;
+  if (archivo2) {
+    const nombreArchivo = Date.now() + "_2_" + archivo2.name;
 
-  await supabase.storage
-    .from("minisplits")
-    .upload(nombre, archivo2);
+    await supabase.storage
+      .from("minisplits")
+      .upload(nombreArchivo, archivo2);
 
-  foto2 = supabase.storage
-    .from("minisplits")
-    .getPublicUrl(nombre).data.publicUrl;
-}
+    foto2 = supabase.storage
+      .from("minisplits")
+      .getPublicUrl(nombreArchivo).data.publicUrl;
+  }
 
-if (archivo3) {
-  const nombre = Date.now() + "_3_" + archivo3.name;
+  if (archivo3) {
+    const nombreArchivo = Date.now() + "_3_" + archivo3.name;
 
-  await supabase.storage
-    .from("minisplits")
-    .upload(nombre, archivo3);
+    await supabase.storage
+      .from("minisplits")
+      .upload(nombreArchivo, archivo3);
 
-  foto3 = supabase.storage
-    .from("minisplits")
-    .getPublicUrl(nombre).data.publicUrl;
-}
+    foto3 = supabase.storage
+      .from("minisplits")
+      .getPublicUrl(nombreArchivo).data.publicUrl;
+  }
 
-  const { error } = await supabase
+  const { data, error } = await supabase
     .from("Catálogo minisplit")
-    
-.insert([{
-  nombre: nombre,
-  marca: marca,
-  toneladas: toneladas,
-  voltaje: voltaje,
-  precio: precio,
-  descripcion: descripcion,
-  foto1: foto1,
-  foto2: foto2,
-  foto3: foto3
-}]);
+    .insert([{
+      nombre,
+      marca,
+      toneladas,
+      voltaje,
+      precio,
+      descripcion,
+      foto1,
+      foto2,
+      foto3
+    }]);
+
+  if (error) {
+    alert(error.message);
+    return;
+  }
+
+  alert("Producto agregado correctamente");
+
   document.getElementById("nombre").value = "";
   document.getElementById("marca").value = "";
+  document.getElementById("toneladas").value = "";
   document.getElementById("voltaje").value = "";
-document.getElementById("precio").value = "";
-  document.getElementById("foto1").value = "";
-document.getElementById("foto2").value = "";
-document.getElementById("foto3").value = "";
+  document.getElementById("precio").value = "";
   document.getElementById("descripcion").value = "";
-  
+  document.getElementById("foto1").value = "";
+  document.getElementById("foto2").value = "";
+  document.getElementById("foto3").value = "";
 
   cargar();
 }
@@ -100,12 +109,12 @@ async function cargar() {
     contenedor.innerHTML += `
       <div class="card">
 
-      
+        ${item.foto1 ? `<img src="${item.foto1}" width="100%">` : ""}
+        ${item.foto2 ? `<img src="${item.foto2}" width="100%">` : ""}
+        ${item.foto3 ? `<img src="${item.foto3}" width="100%">` : ""}
 
-      
-${item.foto1 ? `<img src="${item.foto1}" width="100%">` : ""}
-${item.foto2 ? `<img src="${item.foto2}" width="100%">` : ""}
-${item.foto3 ? `<img src="${item.foto3}" width="100%">` : ""}
+        <h2>${item.nombre}</h2>
+
         <p><b>Marca:</b> ${item.marca}</p>
 
         <p><b>Toneladas:</b> ${item.toneladas}</p>
