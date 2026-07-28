@@ -55,35 +55,62 @@ Guardar Minisplit
 
 </div>
 
+<script src="productos.js"></script>
+
 <script>
 
-let productos = [];
+productos = productos || [];
 
 function agregar(){
 
-    const producto = {
-        nombre: document.getElementById("nombre").value,
-        marca: document.getElementById("marca").value,
-        toneladas: document.getElementById("toneladas").value,
-        voltaje: document.getElementById("voltaje").value,
-        precio: document.getElementById("precio").value,
-        descripcion: document.getElementById("descripcion").value
-    };
+const producto = {
 
-    productos.push(producto);
+id: productos.length + 1,
 
-    document.getElementById("productos").innerHTML += `
-        <div style="border:1px solid #ccc;border-radius:10px;padding:12px;margin:12px 0;">
-            <h3>${producto.nombre}</h3>
-            <p><b>Marca:</b> ${producto.marca}</p>
-            <p><b>Toneladas:</b> ${producto.toneladas}</p>
-            <p><b>Voltaje:</b> ${producto.voltaje}</p>
-            <p><b>Precio:</b> $${producto.precio}</p>
-            <p>${producto.descripcion}</p>
-        </div>
-    `;
+nombre: document.getElementById("nombre").value,
 
-    alert("Minisplit guardado");
+marca: document.getElementById("marca").value,
+
+toneladas: document.getElementById("toneladas").value,
+
+voltaje: document.getElementById("voltaje").value,
+
+precio: document.getElementById("precio").value,
+
+descripcion: document.getElementById("descripcion").value,
+
+fotos:[
+"https://via.placeholder.com/800x500",
+"https://via.placeholder.com/800x500",
+"https://via.placeholder.com/800x500"
+]
+
+};
+
+productos.push(producto);
+
+document.getElementById("productos").innerHTML += `
+
+<div style="border:1px solid #ccc;border-radius:12px;padding:15px;margin:15px 0;">
+
+<h3>${producto.nombre}</h3>
+
+<p><b>Marca:</b> ${producto.marca}</p>
+
+<p><b>Toneladas:</b> ${producto.toneladas}</p>
+
+<p><b>Voltaje:</b> ${producto.voltaje}</p>
+
+<p><b>Precio:</b> $${producto.precio}</p>
+
+<p>${producto.descripcion}</p>
+
+</div>
+
+`;
+
+alert("Minisplit guardado");
+
 }
 
 </script>
