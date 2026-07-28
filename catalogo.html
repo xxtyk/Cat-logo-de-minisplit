@@ -1,1 +1,113 @@
 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Catálogo de Minisplits</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+body{
+    font-family:Arial,sans-serif;
+    background:#f2f2f2;
+    margin:0;
+}
+
+header{
+    background:#0d47a1;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+#catalogo{
+    max-width:900px;
+    margin:auto;
+    padding:15px;
+}
+
+.tarjeta{
+    background:white;
+    border-radius:15px;
+    overflow:hidden;
+    margin-bottom:20px;
+    box-shadow:0 3px 10px rgba(0,0,0,.15);
+}
+
+.tarjeta img{
+    width:100%;
+    height:250px;
+    object-fit:cover;
+}
+
+.info{
+    padding:15px;
+}
+
+.precio{
+    color:#0d47a1;
+    font-size:30px;
+    font-weight:bold;
+}
+
+button{
+    width:100%;
+    padding:15px;
+    border:none;
+    background:#0d47a1;
+    color:white;
+    font-size:18px;
+    cursor:pointer;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>Catálogo de Minisplits</h1>
+
+<p>Elige tu equipo ideal</p>
+
+</header>
+
+<div id="catalogo">
+
+</div>
+
+<script>
+
+document.getElementById("catalogo").innerHTML=`
+<div class="tarjeta">
+
+<img src="https://via.placeholder.com/700x400">
+
+<div class="info">
+
+<h2>Ejemplo Minisplit</h2>
+
+<p>Marca: Mirage</p>
+
+<p>Toneladas: 1</p>
+
+<p>Voltaje: 220V</p>
+
+<p class="precio">$5,700</p>
+
+<button>Ver más</button>
+
+</div>
+
+</div>
+`;
+
+</script>
+
+</body>
+</html>
