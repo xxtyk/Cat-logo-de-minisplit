@@ -13,7 +13,7 @@
 
 <header>
 <h1>Administrador de Minisplits</h1>
-<p>Prueba del botón</p>
+<p>Administrador</p>
 </header>
 
 <div class="contenedor">
@@ -41,11 +41,7 @@
 <label>Foto 3</label>
 <input type="file" id="foto3">
 
-<script>
-function agregar(){
-    alert("Ahora sí funciona");
-}
-</script>
+<br><br>
 
 <button onclick="agregar()">
 Guardar Minisplit
@@ -53,9 +49,44 @@ Guardar Minisplit
 
 <hr>
 
+<h2>Productos Guardados</h2>
+
 <div id="productos"></div>
 
 </div>
+
+<script>
+
+let productos = [];
+
+function agregar(){
+
+    const producto = {
+        nombre: document.getElementById("nombre").value,
+        marca: document.getElementById("marca").value,
+        toneladas: document.getElementById("toneladas").value,
+        voltaje: document.getElementById("voltaje").value,
+        precio: document.getElementById("precio").value,
+        descripcion: document.getElementById("descripcion").value
+    };
+
+    productos.push(producto);
+
+    document.getElementById("productos").innerHTML += `
+        <div style="border:1px solid #ccc;border-radius:10px;padding:12px;margin:12px 0;">
+            <h3>${producto.nombre}</h3>
+            <p><b>Marca:</b> ${producto.marca}</p>
+            <p><b>Toneladas:</b> ${producto.toneladas}</p>
+            <p><b>Voltaje:</b> ${producto.voltaje}</p>
+            <p><b>Precio:</b> $${producto.precio}</p>
+            <p>${producto.descripcion}</p>
+        </div>
+    `;
+
+    alert("Minisplit guardado");
+}
+
+</script>
 
 </body>
 </html>
