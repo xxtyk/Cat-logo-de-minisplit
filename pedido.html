@@ -29,14 +29,13 @@ border-radius:15px;
 box-shadow:0 2px 10px rgba(0,0,0,.15);
 }
 
-input,textarea{
-width:100%;
-padding:14px;
-margin-bottom:15px;
-border:1px solid #ccc;
+.producto{
+background:#e3f2fd;
+border-left:5px solid #0d47a1;
+padding:15px;
 border-radius:10px;
-font-size:16px;
-box-sizing:border-box;
+margin-bottom:20px;
+line-height:1.7;
 }
 
 .aviso{
@@ -46,6 +45,16 @@ padding:15px;
 margin-bottom:20px;
 border-radius:10px;
 line-height:1.6;
+}
+
+input,textarea{
+width:100%;
+padding:14px;
+margin-bottom:15px;
+border:1px solid #ccc;
+border-radius:10px;
+font-size:16px;
+box-sizing:border-box;
 }
 
 button{
@@ -73,6 +82,18 @@ cursor:pointer;
 
 <div class="contenedor">
 
+<div class="producto">
+
+<b>Minisplit seleccionado</b>
+
+<p id="nombreProducto"></p>
+<p id="marcaProducto"></p>
+<p id="toneladasProducto"></p>
+<p id="voltajeProducto"></p>
+<p id="precioProducto"></p>
+
+</div>
+
 <div class="aviso">
 
 📲 <b>Después de enviar tu pedido, te enviaremos un WhatsApp para confirmar tu solicitud, resolver cualquier duda y ponernos de acuerdo sobre la fecha y hora de la instalación de tu minisplit.</b>
@@ -99,6 +120,20 @@ cursor:pointer;
 
 <script>
 
+const params=new URLSearchParams(window.location.search);
+
+const nombreProducto=params.get("nombre")||"";
+const marca=params.get("marca")||"";
+const toneladas=params.get("toneladas")||"";
+const voltaje=params.get("voltaje")||"";
+const precio=params.get("precio")||"";
+
+document.getElementById("nombreProducto").innerHTML="<b>Modelo:</b> "+nombreProducto;
+document.getElementById("marcaProducto").innerHTML="<b>Marca:</b> "+marca;
+document.getElementById("toneladasProducto").innerHTML="<b>Capacidad:</b> "+toneladas;
+document.getElementById("voltajeProducto").innerHTML="<b>Voltaje:</b> "+voltaje;
+document.getElementById("precioProducto").innerHTML="<b>Precio:</b> $"+precio;
+
 function enviarPedido(){
 
 const nombre=document.getElementById("nombre").value;
@@ -109,6 +144,16 @@ const colonia=document.getElementById("colonia").value;
 const comentarios=document.getElementById("comentarios").value;
 
 const mensaje=`📦 *NUEVO PEDIDO DE INSTALACIÓN*
+
+❄️ Minisplit: ${nombreProducto}
+
+🏷️ Marca: ${marca}
+
+💨 Capacidad: ${toneladas}
+
+⚡ Voltaje: ${voltaje}
+
+💰 Precio: $${precio}
 
 👤 Nombre: ${nombre}
 
