@@ -1,1 +1,95 @@
 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pedido</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#f5f5f5;
+}
+
+header{
+background:#0d47a1;
+color:#fff;
+text-align:center;
+padding:18px;
+}
+
+.contenedor{
+max-width:500px;
+margin:20px auto;
+background:#fff;
+padding:20px;
+border-radius:15px;
+box-shadow:0 2px 10px rgba(0,0,0,.15);
+}
+
+input,textarea{
+width:100%;
+padding:14px;
+margin-bottom:15px;
+border:1px solid #ccc;
+border-radius:10px;
+font-size:16px;
+box-sizing:border-box;
+}
+
+.aviso{
+background:#e8f5e9;
+border-left:5px solid #2e7d32;
+padding:15px;
+margin-bottom:20px;
+border-radius:10px;
+line-height:1.5;
+}
+
+button{
+width:100%;
+padding:16px;
+font-size:20px;
+background:#28a745;
+color:#fff;
+border:none;
+border-radius:10px;
+cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>Solicitar instalación</h1>
+</header>
+
+<div class="contenedor">
+
+<div class="aviso">
+📲 <b>Después de enviar tu pedido, te enviaremos un WhatsApp para confirmar tu solicitud, resolver cualquier duda y ponernos de acuerdo sobre la fecha y hora de la instalación de tu minisplit.</b>
+</div>
+
+<input type="text" placeholder="Nombre">
+
+<input type="text" placeholder="WhatsApp">
+
+<input type="text" placeholder="Teléfono">
+
+<input type="text" placeholder="Dirección">
+
+<input type="text" placeholder="Colonia">
+
+<textarea placeholder="Comentarios (opcional)"></textarea>
+
+<button onclick="location.href='pedido_recibido.html'">
+📲 Enviar pedido
+</button>
+
+</div>
+
+</body>
+</html>
