@@ -5,6 +5,8 @@ const supabase = window.supabase.createClient(
 
 async function agregar() {
 
+  alert("Entró a agregar");
+
   const nombre = document.getElementById("nombre").value;
   const marca = document.getElementById("marca").value;
   const toneladas = document.getElementById("toneladas").value;
@@ -108,7 +110,6 @@ async function cargar() {
 
     contenedor.innerHTML += `
       <div class="card">
-
         ${item.foto1 ? `<img src="${item.foto1}" width="100%">` : ""}
         ${item.foto2 ? `<img src="${item.foto2}" width="100%">` : ""}
         ${item.foto3 ? `<img src="${item.foto3}" width="100%">` : ""}
@@ -116,15 +117,11 @@ async function cargar() {
         <h2>${item.nombre}</h2>
 
         <p><b>Marca:</b> ${item.marca}</p>
-
         <p><b>Toneladas:</b> ${item.toneladas}</p>
-
         <p><b>Voltaje:</b> ${item.voltaje}</p>
-
         <p>${item.descripcion}</p>
 
         <h3>$${item.precio}</h3>
-
       </div>
     `;
 
