@@ -1,1 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Administrador de Minisplits</title>
 
+<link rel="stylesheet" href="style.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script defer src="admin.js"></script>
+
+</head>
+
+<body>
+
+<header>
+<h1>Administrador de Minisplits</h1>
+<p>Agregar, editar y eliminar modelos</p>
+</header>
+
+<div class="contenedor">
+
+<h2>Nuevo Minisplit</h2>
+
+<input id="nombre" placeholder="Nombre">
+
+<input id="marca" placeholder="Marca">
+
+<input id="toneladas" placeholder="Toneladas">
+
+<input id="voltaje" placeholder="Voltaje">
+
+<input id="precio" placeholder="Precio">
+
+<textarea id="descripcion" placeholder="Descripción"></textarea>
+
+<label>Foto 1</label>
+<input type="file" id="foto1" accept="image/*">
+
+<label>Foto 2</label>
+<input type="file" id="foto2" accept="image/*">
+
+<label>Foto 3</label>
+<input type="file" id="foto3" accept="image/*">
+
+<button onclick="agregar()">Guardar Minisplit</button>
+
+<hr>
+
+<div id="productos"></div>
+
+</div>
+
+</body>
+</html>
