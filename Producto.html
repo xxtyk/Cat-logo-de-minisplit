@@ -121,7 +121,8 @@ cursor:pointer;
 </button>
 
 <script>
-    const params = new URLSearchParams(window.location.search);
+
+const params = new URLSearchParams(window.location.search);
 const id = Number(params.get("id")) || 1;
 
 const producto = productos.find(p => p.id === id);
@@ -151,7 +152,13 @@ galeria.innerHTML += `
 
 document.querySelector(".pedir").onclick=function(){
 
-location.href="pedido.html?id="+id;
+location.href=
+"pedido.html?id="+id+
+"&nombre="+encodeURIComponent(producto.nombre)+
+"&marca="+encodeURIComponent(producto.marca)+
+"&toneladas="+encodeURIComponent(producto.toneladas)+
+"&voltaje="+encodeURIComponent(producto.voltaje)+
+"&precio="+encodeURIComponent(producto.precio);
 
 };
 
