@@ -1,12 +1,12 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pedido</title>
+<title>Solicitar instalación</title>
 
 <style>
+
 body{
 margin:0;
 font-family:Arial,sans-serif;
@@ -17,7 +17,7 @@ header{
 background:#0d47a1;
 color:#fff;
 text-align:center;
-padding:18px;
+padding:20px;
 }
 
 .contenedor{
@@ -45,7 +45,7 @@ border-left:5px solid #2e7d32;
 padding:15px;
 margin-bottom:20px;
 border-radius:10px;
-line-height:1.5;
+line-height:1.6;
 }
 
 button{
@@ -53,43 +53,86 @@ width:100%;
 padding:16px;
 font-size:20px;
 background:#28a745;
-color:#fff;
+color:white;
 border:none;
 border-radius:10px;
 cursor:pointer;
 }
+
 </style>
+
 </head>
 
 <body>
 
 <header>
+
 <h1>Solicitar instalación</h1>
+
 </header>
 
 <div class="contenedor">
 
 <div class="aviso">
+
 📲 <b>Después de enviar tu pedido, te enviaremos un WhatsApp para confirmar tu solicitud, resolver cualquier duda y ponernos de acuerdo sobre la fecha y hora de la instalación de tu minisplit.</b>
+
 </div>
 
-<input type="text" placeholder="Nombre">
+<input id="nombre" type="text" placeholder="Nombre">
 
-<input type="text" placeholder="WhatsApp">
+<input id="whatsapp" type="text" placeholder="WhatsApp">
 
-<input type="text" placeholder="Teléfono">
+<input id="telefono" type="text" placeholder="Teléfono">
 
-<input type="text" placeholder="Dirección">
+<input id="direccion" type="text" placeholder="Dirección">
 
-<input type="text" placeholder="Colonia">
+<input id="colonia" type="text" placeholder="Colonia">
 
-<textarea placeholder="Comentarios (opcional)"></textarea>
+<textarea id="comentarios" placeholder="Comentarios (opcional)"></textarea>
 
-<button onclick="location.href='pedido_recibido.html'">
+<button onclick="enviarPedido()">
 📲 Enviar pedido
 </button>
 
 </div>
+
+<script>
+
+function enviarPedido(){
+
+const nombre=document.getElementById("nombre").value;
+const whatsapp=document.getElementById("whatsapp").value;
+const telefono=document.getElementById("telefono").value;
+const direccion=document.getElementById("direccion").value;
+const colonia=document.getElementById("colonia").value;
+const comentarios=document.getElementById("comentarios").value;
+
+const mensaje=`📦 *NUEVO PEDIDO DE INSTALACIÓN*
+
+👤 Nombre: ${nombre}
+
+📲 WhatsApp: ${whatsapp}
+
+☎️ Teléfono: ${telefono}
+
+📍 Dirección: ${direccion}
+
+🏠 Colonia: ${colonia}
+
+📝 Comentarios: ${comentarios}`;
+
+window.open("https://wa.me/526679771409?text="+encodeURIComponent(mensaje),"_blank");
+
+setTimeout(function(){
+
+location.href="pedido_recibido.html";
+
+},1000);
+
+}
+
+</script>
 
 </body>
 </html>
